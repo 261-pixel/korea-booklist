@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <title>韓國語言學習、文化與旅遊精選書單</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #3b82f6;
+      --bg: #f1f5f9;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --border: #e2e8f0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 24px 16px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    header {
+      background: linear-gradient(135deg, #1e3a8a, #4338ca);
+      color: white;
+      padding: 32px 24px;
+      border-radius: 14px;
+      text-align: center;
+      margin-bottom: 24px;
+      box-shadow: 0 6px 18px rgba(30, 58, 138, 0.15);
+    }
+    header h1 {
+      margin: 0 0 8px 0;
+      font-size: 1.85rem;
+      letter-spacing: 0.5px;
+    }
+    header p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .filter-btn {
+      padding: 9px 20px;
+      border: 1.5px solid var(--primary);
+      background: white;
+      color: var(--primary);
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 2px 8px rgba(30, 58, 138, 0.25);
+    }
+    .table-wrapper {
+      background: var(--card-bg);
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 900px;
+    }
+    th {
+      background-color: #f8fafc;
+      color: var(--primary);
+      font-weight: 700;
+      text-align: left;
+      padding: 16px;
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+    }
+    td {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    tr:hover {
+      background-color: #f8fafc;
+    }
+    .col-id { width: 50px; text-align: center; font-weight: 700; color: #64748b; }
+    .col-cat { width: 125px; }
+    .col-title { width: 210px; font-weight: 700; color: #0f172a; font-size: 1rem; }
+    .col-img { width: 105px; text-align: center; }
+    .col-desc { font-size: 0.92rem; color: #334155; text-align: justify; }
+    .col-link { width: 135px; text-align: center; }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .badge-lang { background-color: #dbeafe; color: #1d4ed8; }
+    .badge-cult { background-color: #fef3c7; color: #b45309; }
+    .badge-hot { background-color: #fee2e2; color: #b91c1c; display: block; margin-top: 5px; font-size: 0.74rem; }
+    .book-cover {
+      width: 82px;
+      height: 115px;
+      object-fit: contain;
+      border-radius: 5px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+    }
+    .buy-btn {
+      display: inline-block;
+      padding: 8px 14px;
+      background-color: #559600;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.1s;
+      white-space: nowrap;
+    }
+    .buy-btn:hover {
+      background-color: #417300;
+      transform: translateY(-1px);
+    }
+    .book-code {
+      display: block;
+      font-size: 0.72rem;
+      color: #64748b;
+      margin-top: 5px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🇰🇷 韓國語言學習、文化與旅遊精選書單</h1>
+      <p>全書單封面與網址精準更新版・共 14 本（指定 10 本 ＋ 暢銷韓語 1 本 ＋ 暢銷旅遊 3 本）</p>
+    </header>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterBooks('all', this)">全部書籍 (14)</button>
+      <button class="filter-btn" onclick="filterBooks('語言學習', this)">語言學習 (6)</button>
+      <button class="filter-btn" onclick="filterBooks('文化', this)">文化與旅遊 (8)</button>
+    </div>
+
+    <div class="table-wrapper">
+      <table id="bookTable">
+        <thead>
+          <tr>
+            <th class="col-id">序號</th>
+            <th class="col-cat">書籍種類</th>
+            <th class="col-title">書籍名稱</th>
+            <th class="col-img">書籍圖片</th>
+            <th>書籍簡介</th>
+            <th class="col-link">博客來購買</th>
+          </tr>
+        </thead>
+        <tbody id="bookBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function generateFallbackCover(title, category) {
+      const isLang = category === '語言學習';
+      const bgTop = isLang ? "#1e293b" : "#0284c7";
+      const bgBottom = isLang ? "#0f172a" : "#0369a1";
+      const badgeColor = isLang ? "#e11d48" : "#ea580c";
+      const badgeText = isLang ? "KOREAN STUDY" : "KOREA TRAVEL";
+
+      const lines = [];
+      for (let i = 0; i < title.length; i += 6) {
+        lines.push(title.slice(i, i + 6));
+      }
+      const titleSvg = lines.slice(0, 4).map((line, i) => 
+        `<text x="84" y="${88 + i * 20}" font-family="'Noto Sans TC', sans-serif" font-size="14" font-weight="900" fill="#1e293b" text-anchor="middle">${line}</text>`
+      ).join('');
+
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="160" height="224" viewBox="0 0 160 224">
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="${bgTop}"/>
+              <stop offset="100%" stop-color="${bgBottom}"/>
+            </linearGradient>
+          </defs>
+          <rect width="160" height="224" fill="url(#bg)" rx="4"/>
+          <rect x="0" y="0" width="10" height="224" fill="rgba(0,0,0,0.25)"/>
+          <rect x="24" y="16" width="120" height="20" rx="10" fill="${badgeColor}"/>
+          <text x="84" y="30" font-family="sans-serif" font-size="9.5" font-weight="bold" fill="#ffffff" text-anchor="middle">${badgeText}</text>
+          <rect x="20" y="46" width="128" height="124" rx="6" fill="#ffffff" fill-opacity="0.96"/>
+          ${titleSvg}
+          <text x="84" y="198" font-family="sans-serif" font-size="9.5" font-weight="bold" fill="#ffffff" text-anchor="middle">博客來精選書目</text>
+        </svg>
+      `.trim();
+      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+    }
+
+    function getBooksImgUrl(book) {
+      const bookId = book.booksId;
+      if (!bookId || bookId.length !== 10 || !/^\d+$/.test(bookId)) {
+        return generateFallbackCover(book.title, book.category);
+      }
+      const p1 = bookId.slice(0, 3);
+      const p2 = bookId.slice(3, 6);
+      const p3 = bookId.slice(6, 8);
+      return `https://www.books.com.tw/img/${p1}/${p2}/${p3}/${bookId}.jpg`;
+    }
+
+    const books = [
+      { 
+        id: 1, category: "文化", tag: "", 
+        title: "700萬人愛看的韓國史", 
+        booksId: "0010981663",
+        desc: "韓國國民歷史講師崔兌誠代表作，累積超過七百萬名聽眾！從古朝鮮三國鼎立一路講述至南北韓分裂，結合熱門韓劇與電影背後的歷史真相，敘事緊湊如追劇般讓人欲罷不能。", 
+        url: "https://www.books.com.tw/products/0010981663" 
+      },
+      { 
+        id: 2, category: "語言學習", tag: "", 
+        title: "K-POP追星旅遊必學韓語", 
+        booksId: "ISBN:9789869964487",
+        desc: "專為哈韓族與自由行旅客設計，以「5天4夜玩首爾」為主軸，將追星景點、美食購物與韓語學習完美結合。從單字、句型到實用會話循序漸進，並附全書羅馬拼音與影音QR Code。", 
+        url: "https://search.books.com.tw/search/query/key/9789869964487/cat/all" 
+      },
+      { 
+        id: 3, category: "語言學習", tag: "", 
+        title: "全新！自學韓語看完這本就能說", 
+        booksId: "0010966131",
+        desc: "專為華人量身打造的All in one韓語教材！涵蓋40音發音、筆順教學、心智圖聯想單字、場景短句與基礎文法，搭配真人嘴型圖解與線上音檔，讓零基礎初學者也能輕鬆開口說韓語。", 
+        url: "https://www.books.com.tw/products/0010966131" 
+      },
+      { 
+        id: 4, category: "文化", tag: "", 
+        title: "你一定想看的韓國史", 
+        booksId: "0010872960",
+        desc: "以時間為軸線，精選韓國歷史上的重大事件、風雲人物與文化成就。獨特之處在於將每個事件與中國及世界歷史同步對照，讓讀者在宏觀的歷史座標中，一次理清朝鮮半島的演變脈絡。", 
+        url: "https://www.books.com.tw/products/0010872960" 
+      },
+      { 
+        id: 5, category: "文化", tag: "", 
+        title: "我的第一堂韓國文化課", 
+        booksId: "0011062857",
+        desc: "從韓國的歷史脈絡延伸至現代K-pop潮流，透過八大主題帶你全方位認識韓國！內容涵蓋問候禮儀、傳統節日、飲食習慣、交通與韓流文化，並附作者親錄韓語朗讀音檔，適合文化入門。", 
+        url: "https://www.books.com.tw/products/0011062857?sloc=main" 
+      },
+      { 
+        id: 6, category: "語言學習", tag: "", 
+        title: "追星應援必備！超可愛手寫韓語", 
+        booksId: "0011056583",
+        desc: "追星族與手帳控必收的實用指南！收錄從演唱會姓名板、求飯撒標語、粉絲信到手帳裝飾的全方位應援金句，並附贈描繪與手寫練習本，教你寫出既道地又可愛的韓文字體。", 
+        url: "https://www.books.com.tw/products/0011056583" 
+      },
+      { 
+        id: 7, category: "語言學習", tag: "", 
+        title: "最強圖解潮流韓語", 
+        booksId: "0010984715",
+        desc: "擺脫死背單字的痛苦，從追星與流行娛樂出發，秒記超過1000個超實用韓語單字！獨創「對比式」記憶法搭配全書生動圖解，幫助學習者瞬間掌握語感與使用情境，亦適用TOPIK韓檢。", 
+        url: "https://www.books.com.tw/products/0010984715" 
+      },
+      { 
+        id: 8, category: "文化", tag: "", 
+        title: "韓食點餐完全圖解", 
+        booksId: "0010870966",
+        desc: "吃貨遊韓必備的美食尋味指南！完整解析烤肉、炸雞、鍋物、海鮮市場等14大類正宗韓食，不僅教你如何看懂韓文菜單與道地吃法，更傳授餐廳訂位、排隊與點餐實用會話，不懂韓文也能吃遍韓國。", 
+        url: "https://www.books.com.tw/products/0010870966" 
+      },
+      { 
+        id: 9, category: "語言學習", tag: "", 
+        title: "超蝦趴！K-pop追星韓語", 
+        booksId: "0011029596",
+        desc: "網羅演唱會、簽售會、打歌節目與直播中最真實的追星用語與飯圈縮略語！搭配精緻韓系插圖與繁中版限定「空耳」諧音標示，加上韓籍老師線上音檔，讓你追星現場也能大聲應援。", 
+        url: "https://www.books.com.tw/products/0011029596" 
+      },
+      { 
+        id: 10, category: "文化", tag: "", 
+        title: "極簡韓國史（六反田豐監修）", 
+        booksId: "0010952870",
+        desc: "由日本韓國史專家六反田豐監修，從古朝鮮、三韓時代、朝鮮王朝、訓民正音一路剖析至現代漢江奇蹟與韓流崛起。透過簡明易懂的脈絡與專欄對照，帶你快速掌握朝鮮半島的前世今生。", 
+        url: "https://www.books.com.tw/products/0010952870?sloc=main" 
+      },
+      { 
+        id: 11, category: "語言學習", tag: "暢銷韓語推薦", 
+        title: "全新！我的第一本韓語課本【初級篇】", 
+        booksId: "0010961316",
+        desc: "累積銷量突破數十萬冊的長青暢銷書！專為華語母語者設計，巧妙運用注音與音標輔助記憶韓語發音，內容涵蓋實用生活對話與TOPIK初級檢定核心文法，讓初學者無痛跨越入門門檻。", 
+        url: "https://www.books.com.tw/products/0010961316" 
+      },
+      { 
+        id: 12, category: "文化", tag: "暢銷旅遊 Top 1", 
+        title: "出發！首爾自助旅行2026-2027", 
+        booksId: "0011041895",
+        desc: "旅遊書霸主墨刻編輯部最新力作，針對2026-2027年首爾最新趨勢全面更新！以Step by Step圖解方式解析交通票券、聖水洞與漢南洞等熱門商圈、必吃美食與住宿推薦，新手也能輕鬆規劃。", 
+        url: "https://www.books.com.tw/products/0011041895?sloc=main" 
+      },
+      { 
+        id: 13, category: "文化", tag: "暢銷旅遊 Top 2", 
+        title: "釜山‧大邱地鐵地圖快易通", 
+        booksId: "博客來精準檢索",
+        desc: "暢銷排行榜常勝軍，專為韓國南部雙城自由行打造！以地鐵路線為核心，精準標示海雲台、廣安里、甘川洞文化村及大邱近代胡同等必訪景點與周邊美食地圖，按圖索驥就能玩遍釜山與大邱。", 
+        url: "https://search.books.com.tw/search/query/key/%E9%87%9C%E5%B1%B1+%E5%A4%A7%E9%82%B1%E5%9C%B0%E9%90%B5%E5%9C%B0%E5%9C%96%E5%BF%AB%E6%98%93%E9%80%9A/cat/all" 
+      },
+      { 
+        id: 14, category: "文化", tag: "暢銷旅遊 Top 3", 
+        title: "大首爾攻略完全制霸（2026最新）", 
+        booksId: "0011062659",
+        desc: "資訊量最豐富的首爾全境旅遊聖經！不僅涵蓋首爾市區各大潮流街區、傳統宮殿與夜市，更延伸至仁川、水原、京畿道近郊景點，搭配詳細分區地圖與最新交通指南，滿足深度旅遊玩家需求。", 
+        url: "https://www.books.com.tw/products/0011062659?sloc=main" 
+      }
+    ];
+
+    function renderBooks(filter) {
+      const tbody = document.getElementById('bookBody');
+      tbody.innerHTML = '';
+      const filtered = filter === 'all' ? books : books.filter(b => b.category === filter);
+      
+      filtered.forEach(book => {
+        const badgeClass = book.category === '語言學習' ? 'badge-lang' : 'badge-cult';
+        const tagHtml = book.tag ? `<span class="badge badge-hot">${book.tag}</span>` : '';
+        const imgSrc = getBooksImgUrl(book);
+        const fallbackSrc = generateFallbackCover(book.title, book.category);
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="col-id">${book.id}</td>
+          <td class="col-cat"><span class="badge ${badgeClass}">${book.category}</span>${tagHtml}</td>
+          <td class="col-title">${book.title}</td>
+          <td class="col-img">
+            <img src="${imgSrc}" alt="${book.title}" class="book-cover" referrerpolicy="no-referrer">
+          </td>
+          <td class="col-desc">${book.desc}</td>
+          <td class="col-link">
+            <a href="${book.url}" target="_blank" rel="noopener noreferrer" class="buy-btn">前往博客來</a>
+            <span class="book-code">${book.booksId}</span>
+          </td>
+        `;
+
+        const imgEl = tr.querySelector('img');
+        imgEl.onerror = function() {
+          this.onerror = null;
+          this.src = fallbackSrc;
+        };
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterBooks(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderBooks(category);
+    }
+
+    renderBooks('all');
+  </script>
+</body>
+</html>
